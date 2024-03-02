@@ -29,6 +29,7 @@ gulp.task("watch", () => {
     port: 8000,
     livereload: true,
   });
+  
   gulp.watch("./stage/html/**/*.pug", gulp.parallel("html"));
   gulp.watch("./stage/css/**/*.*", gulp.parallel("css"));
   gulp.watch("./stage/js/*.js", gulp.parallel("js"));
