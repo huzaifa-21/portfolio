@@ -1,13 +1,11 @@
 let skillSection = document.querySelector("#skills");
 let homeSection = document.querySelector("#home");
 let skillBox = document.querySelectorAll(".skill-box");
+let oneSkillBox = document.querySelector(".skill-box");
 let links = document.querySelectorAll(".nav-link");
 skillBox = Array.from(skillBox);
 
 window.onscroll = () => {
-  console.log(`window ${Math.trunc(window.scrollY)}`);
-  console.log(`homesection ${Math.trunc(homeSection.offsetTop)}`);
-  console.log(`skills ${Math.trunc(skillSection.offsetTop)}`);
   if (Math.trunc(window.scrollY) < 150) {
     handelActiveScroll("home");
   }
@@ -40,4 +38,5 @@ function handelActiveScroll(sectionId) {
     }
   });
 }
+
 handelActive();
