@@ -11,7 +11,7 @@ window.onscroll = () => {
   }
 
   if (
-    Math.trunc(window.scrollY) > 500 &&
+    Math.trunc(window.scrollY) > 400 &&
     Math.trunc(window.scrollY) < Math.trunc(skillSection.offsetTop - 200)
   ) {
     skillBox.forEach((skill) => {
