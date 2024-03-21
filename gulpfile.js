@@ -3,7 +3,7 @@ var gulp = require("gulp"),
   sass = require("gulp-sass")(require("sass")),
   sourcemap = require("gulp-sourcemaps"),
   connect = require("gulp-connect");
-  
+
 gulp.task("html", () => {
   return gulp
     .src("./stage/html/*.pug")
@@ -29,7 +29,7 @@ gulp.task("watch", () => {
     port: 8000,
     livereload: true,
   });
-  
+
   gulp.watch("./stage/html/**/*.pug", gulp.parallel("html"));
   gulp.watch("./stage/css/**/*.*", gulp.parallel("css"));
   gulp.watch("./stage/js/*.js", gulp.parallel("js"));
