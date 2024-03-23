@@ -7,7 +7,6 @@ let links = document.querySelectorAll(".nav-link");
 skillBox = Array.from(skillBox);
 
 window.onscroll = () => {
-
   console.log(getBottom(projectSection));
   if (Math.trunc(window.scrollY) < 150) {
     handelActiveScroll("home");
@@ -69,3 +68,27 @@ let projectBottom = projectSection.offsetTop + projectSection.offsetHeight;
 handleVideoPlay();
 
 handelActive();
+
+//====== start handling email sending from the client side =============
+let form = document.querySelector("form");
+let clientName = document.getElementById("from_name");
+let clientMail = document.getElementById("email_id");
+let clientMessage = document.getElementById("message");
+
+form.onsubmit = (e) => {
+  e.preventDefault();
+  let params = {
+    from_name: clientName.value,
+    email_id: clientMail.value,
+    message: clientMessage.value,
+  };
+  emailjs.send("service_9jmy653", "template_6l5xirh", params).then(
+    (response) => {
+      console.log("SUCCESS!", response.status, response.text);
+    },
+    (error) => {
+      console.log("FAILED...", error);
+    }
+  );
+};
+//====== end handling email sending from the client side =============
