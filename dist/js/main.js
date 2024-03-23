@@ -13,8 +13,8 @@ window.onscroll = () => {
   }
 
   if (
-    Math.trunc(window.scrollY) > 400 &&
-    Math.trunc(window.scrollY) < Math.trunc(getBottom(skillSection) - 500)
+    Math.trunc(window.scrollY) > 500 &&
+    getBottom(skillSection,500) 
   ) {
     skillBox.forEach((skill) => {
       skill.style = "animation-play-state:running;";
@@ -23,11 +23,12 @@ window.onscroll = () => {
   }
   if (
     Math.trunc(window.scrollY) > Math.trunc(projectSection.offsetTop - 100) &&
-    Math.trunc(window.scrollY) < Math.trunc(getBottom(projectSection) - 200)
+    getBottom(projectSection,200)
   ) {
     handelActiveScroll("projects");
   }
 };
+
 
 function handelActive() {
   links.forEach((link) => {
@@ -37,6 +38,7 @@ function handelActive() {
     });
   });
 }
+handelActive();
 
 function handelActiveScroll(sectionId) {
   links.forEach((link) => {
@@ -59,15 +61,16 @@ function handleVideoPlay() {
   });
 }
 
-function getBottom(section) {
+handleVideoPlay();
+
+function getBottom(section,number) {
   let offsetBottom = section.offsetTop + section.offsetHeight;
-  return offsetBottom;
+  let bottom= Math.trunc(window.scrollY) < Math.trunc(offsetBottom - number);
+  return bottom;
 }
 // let projectBottom = projectSection.offsetTop + projectSection.offsetHeight;
 
-handleVideoPlay();
 
-handelActive();
 
 //====== start handling email sending from the client side =============
 let form = document.querySelector("form");
