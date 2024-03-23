@@ -4,8 +4,8 @@ let projectSection = document.querySelector("#project");
 let skillBox = document.querySelectorAll(".skill-box");
 let oneSkillBox = document.querySelector(".skill-box");
 let links = document.querySelectorAll(".nav-link");
-skillBox = Array.from(skillBox);
 
+skillBox = Array.from(skillBox);
 window.onscroll = () => {
   console.log(getBottom(projectSection));
   if (Math.trunc(window.scrollY) < 150) {
@@ -14,7 +14,7 @@ window.onscroll = () => {
 
   if (
     Math.trunc(window.scrollY) > 400 &&
-    Math.trunc(window.scrollY) < Math.trunc(skillSection.offsetTop - 200)
+    Math.trunc(window.scrollY) < Math.trunc(getBottom(skillSection) - 500)
   ) {
     skillBox.forEach((skill) => {
       skill.style = "animation-play-state:running;";
@@ -23,9 +23,9 @@ window.onscroll = () => {
   }
   if (
     Math.trunc(window.scrollY) > Math.trunc(projectSection.offsetTop - 100) &&
-    Math.trunc(window.scrollY) < Math.trunc(projectSection.offsetBottom - 100)
+    Math.trunc(window.scrollY) < Math.trunc(getBottom(projectSection) - 200)
   ) {
-    handelActiveScroll("project");
+    handelActiveScroll("projects");
   }
 };
 
@@ -63,7 +63,7 @@ function getBottom(section) {
   let offsetBottom = section.offsetTop + section.offsetHeight;
   return offsetBottom;
 }
-let projectBottom = projectSection.offsetTop + projectSection.offsetHeight;
+// let projectBottom = projectSection.offsetTop + projectSection.offsetHeight;
 
 handleVideoPlay();
 
