@@ -1,13 +1,13 @@
 let skillSection = document.querySelector("#skills");
 let homeSection = document.querySelector("#home");
 let projectSection = document.querySelector("#project");
+let contactSection = document.querySelector("#contact")
 let skillBox = document.querySelectorAll(".skill-box");
 let oneSkillBox = document.querySelector(".skill-box");
 let links = document.querySelectorAll(".nav-link");
 
 skillBox = Array.from(skillBox);
 window.onscroll = () => {
-  console.log(getBottom(projectSection));
   if (Math.trunc(window.scrollY) < 150) {
     handelActiveScroll("home");
   }
@@ -18,11 +18,12 @@ window.onscroll = () => {
     });
     handelActiveScroll("skills");
   }
-  if (
-    Math.trunc(window.scrollY) > Math.trunc(projectSection.offsetTop - 100) &&
-    getBottom(projectSection, 200)
-  ) {
+
+  if (getTop(projectSection, 100) && getBottom(projectSection, 600)) {
     handelActiveScroll("projects");
+  }
+  if (getTop(contactSection, 200) && getBottom(contactSection, 10)) {
+    handelActiveScroll("contact");
   }
 };
 
@@ -58,15 +59,19 @@ function handleVideoPlay() {
 }
 
 handleVideoPlay();
-
+getTop(skillSection, 100);
 function getBottom(section, number) {
   let offsetBottom = section.offsetTop + section.offsetHeight;
   let bottom = Math.trunc(window.scrollY) < Math.trunc(offsetBottom - number);
   return bottom;
 }
-// let projectBottom = projectSection.offsetTop + projectSection.offsetHeight;
 
-//====== start handling email sending from the client side =============
+function getTop(section, number) {
+  let top = Math.trunc(window.scrollY) > Math.trunc(section.offsetTop - number);
+  return top;
+}
+
+//====== start handling email sending from the client side =================
 let form = document.querySelector("form");
 let clientName = document.getElementById("from_name");
 let clientMail = document.getElementById("email_id");
@@ -130,4 +135,9 @@ form.onsubmit = (e) => {
     e.target.parentElement.classList.remove("not-valid");
   };
 });
-//====== end handling email sending from the client side =============
+//====== end handling email sending from the client side ====================
+//======handle the recent year for the copy rights ==========================
+let spanYear = document.querySelector(".year")
+let date = new Date
+spanYear.innerHTML = `${date.getFullYear()}`;
+//======handle the recent year for the copy rights ==========================
