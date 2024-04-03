@@ -1,10 +1,15 @@
 let skillSection = document.querySelector("#skills");
 let homeSection = document.querySelector("#home");
 let projectSection = document.querySelector("#project");
-let contactSection = document.querySelector("#contact")
+let contactSection = document.querySelector("#contact");
 let skillBox = document.querySelectorAll(".skill-box");
 let oneSkillBox = document.querySelector(".skill-box");
 let links = document.querySelectorAll(".nav-link");
+let projects = document.querySelectorAll(".projects .container > div");
+let contactInfo = document.querySelector(".contact .container .info")
+let contactForm = document.querySelector("form");
+
+console.log(projects);
 
 skillBox = Array.from(skillBox);
 window.onscroll = () => {
@@ -17,13 +22,19 @@ window.onscroll = () => {
       skill.style = "animation-play-state:running;";
     });
     handelActiveScroll("skills");
+    // firtProject.style.animationPlayState = "running";
   }
 
   if (getTop(projectSection, 100) && getBottom(projectSection, 600)) {
     handelActiveScroll("projects");
+    projects.forEach(
+      (project) => (project.style = "animation-play-state:running;")
+    );
   }
   if (getTop(contactSection, 200) && getBottom(contactSection, 10)) {
     handelActiveScroll("contact");
+    contactForm.style.margin = 0;
+    contactInfo.style.margin = 0;
   }
 };
 
@@ -137,7 +148,7 @@ form.onsubmit = (e) => {
 });
 //====== end handling email sending from the client side ====================
 //======handle the recent year for the copy rights ==========================
-let spanYear = document.querySelector(".year")
-let date = new Date
+let spanYear = document.querySelector(".year");
+let date = new Date();
 spanYear.innerHTML = `${date.getFullYear()}`;
 //======handle the recent year for the copy rights ==========================
