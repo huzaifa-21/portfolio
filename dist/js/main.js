@@ -35,6 +35,8 @@ window.onscroll = () => {
     handelActiveScroll("contact");
     contactForm.style.margin = 0;
     contactInfo.style.margin = 0;
+    contactInfo.style.opacity = "1";
+    contactForm.style.opacity = "1";
   }
 };
 
